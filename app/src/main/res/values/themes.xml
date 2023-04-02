@@ -1,0 +1,76 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="Theme.VolunteerApp" parent="Theme.Material3.Light">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/blue_500</item>
+        <item name="colorPrimaryVariant">@color/blue_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/grey_200</item>
+        <item name="colorSecondaryVariant">@color/grey_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+    <style name="login" parent="Theme.Material3.Light">
+        <item name="android:background">@color/blue_500</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/grey_200</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/blue_200</item>
+        <item name="colorSecondaryVariant">@color/blue_500</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="login.btn" parent="Theme.Material3.Dark">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/grey_200</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/blue_200</item>
+        <item name="colorSecondaryVariant">@color/blue_500</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <item name="fontFamily">@font/inter_bold</item>
+    </style>
+
+    <style name="drawable">
+        <item name="drawableTint">?attr/colorOnSurface</item>
+    </style>
+
+    <style name="drawable.dropdwon">
+        <item name="android:drawableEnd">@drawable/drop_down_arrow</item>
+    </style>
+
+    <style name="info_title">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/inter</item>
+        <item name="maxLines">1</item>
+    </style>
+
+    <style name="info_title.Bold">
+        <item name="textAllCaps">true</item>
+        <item name="android:textSize">16sp</item>
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="welcome">
+        <item name="fontFamily">@font/inter</item>
+        <item name="android:textSize">32sp</item>
+    </style>
+
+    <style name="button">
+        <item name="fontFamily">@font/inter_bold</item>
+        <item name="cornerRadius">10dp</item>
+    </style>
+
+    <style name="button.danger">
+        <item name="android:backgroundTint">@color/danger</item>
+    </style>
+
+
+</resources>
