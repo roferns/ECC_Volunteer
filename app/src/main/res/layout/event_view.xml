@@ -51,54 +51,99 @@
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
-                android:id="@+id/venueNameTV"
+                android:id="@+id/venueNameLabel"
+                style="@style/info_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/deptNameLabel"
+                android:layout_marginTop="3dp"
                 android:paddingLeft="16dp"
+                android:paddingRight="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/deptNameTV"
+                tools:text="Venue Name: " />
+
+            <TextView
+                android:id="@+id/venueNameTV"
+                style="@style/info_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/deptNameTV"
                 android:layout_marginTop="3dp"
-                app:layout_constraintEnd_toEndOf="@+id/deptNameTV"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/venueNameLabel"
                 app:layout_constraintTop_toBottomOf="@+id/deptNameTV"
-                style="@style/info_title"
                 tools:text="Venue Name" />
 
             <TextView
-                android:id="@+id/deptNameTV"
+                android:id="@+id/deptNameLabel"
+                style="@style/info_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="3dp"
                 android:paddingLeft="16dp"
+                android:paddingRight="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cl2"
+                tools:text="Department: " />
+
+
+            <TextView
+                android:id="@+id/deptNameTV"
                 style="@style/info_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                app:layout_constraintStart_toEndOf="@+id/deptNameLabel"
+                app:layout_constraintTop_toBottomOf="@+id/cl2"
                 tools:text="Department Name" />
 
             <TextView
-                android:id="@+id/facultyNameTV"
-                android:paddingLeft="16dp"
+                android:id="@+id/facultyNameLabel"
+                style="@style/info_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/venueNameTV"
                 android:layout_marginTop="3dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="5dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/venueNameTV"
-                style="@style/info_title"
-                tools:text="Faculty" />
+                app:layout_constraintTop_toBottomOf="@+id/venueNameLabel"
+                tools:text="Faculty Name: " />
 
 
             <TextView
-                android:id="@+id/pointsTV"
-                android:paddingLeft="16dp"
+                android:id="@+id/facultyNameTV"
+                style="@style/info_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Points"
-                android:layout_marginTop="3dp"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
+                android:layout_below="@+id/venueNameTV"
+                android:layout_marginTop="4dp"
+                app:layout_constraintStart_toEndOf="@+id/facultyNameLabel"
+                app:layout_constraintTop_toBottomOf="@+id/venueNameTV"
+                tools:layout_editor_absoluteX="179dp"
+                tools:text="Faculty" />
+
+            <TextView
+                android:id="@+id/pointsLabel"
                 style="@style/info_title"
-                app:layout_constraintTop_toBottomOf="@+id/facultyNameTV" />
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:paddingLeft="16dp"
+                android:paddingRight="5dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/facultyNameLabel"
+                tools:text="Points Allotted: " />
+
+            <TextView
+                android:id="@+id/pointsTV"
+                style="@style/info_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                app:layout_constraintStart_toEndOf="@+id/pointsLabel"
+                android:text="Points"
+                app:layout_constraintTop_toBottomOf="@+id/facultyNameTV"
+                tools:layout_editor_absoluteX="162dp" />
 
             <LinearLayout
                 android:id="@+id/ll"
