@@ -120,7 +120,7 @@ public class ViewEvents extends BaseActivity implements AdapterView.OnItemSelect
                                             ((HashMap) value.get(i)).get("department") + "",
                                             ((HashMap) value.get(i)).get("venue") + "",
                                             ((HashMap) value.get(i)).get("faculty") + "",
-                                            "Points Allotted: " + ((HashMap) value.get(i)).get("points") + "",
+                                            ((HashMap) value.get(i)).get("points") + "",
                                             ((HashMap) value.get(i)).get("date")+"",
                                             ((HashMap) value.get(i)).get("time") + ""));
                                 }

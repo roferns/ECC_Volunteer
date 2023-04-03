@@ -61,7 +61,7 @@
                 android:paddingRight="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/deptNameTV"
-                tools:text="Venue Name: " />
+                android:text="Venue Name: " />
 
             <TextView
                 android:id="@+id/venueNameTV"
@@ -79,12 +79,12 @@
                 style="@style/info_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="10dp"
                 android:paddingLeft="16dp"
                 android:paddingRight="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/cl2"
-                tools:text="Department: " />
+                android:text="Department: " />
 
 
             <TextView
@@ -92,7 +92,7 @@
                 style="@style/info_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_marginTop="10dp"
                 app:layout_constraintStart_toEndOf="@+id/deptNameLabel"
                 app:layout_constraintTop_toBottomOf="@+id/cl2"
                 tools:text="Department Name" />
@@ -107,7 +107,7 @@
                 android:paddingRight="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/venueNameLabel"
-                tools:text="Faculty Name: " />
+                android:text="Faculty Name: " />
 
 
             <TextView
@@ -120,7 +120,7 @@
                 app:layout_constraintStart_toEndOf="@+id/facultyNameLabel"
                 app:layout_constraintTop_toBottomOf="@+id/venueNameTV"
                 tools:layout_editor_absoluteX="179dp"
-                tools:text="Faculty" />
+                android:text="Faculty" />
 
             <TextView
                 android:id="@+id/pointsLabel"
@@ -132,7 +132,7 @@
                 android:paddingRight="5dp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/facultyNameLabel"
-                tools:text="Points Allotted: " />
+                android:text="Points Allotted: " />
 
             <TextView
                 android:id="@+id/pointsTV"
