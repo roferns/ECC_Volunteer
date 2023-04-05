@@ -68,7 +68,7 @@ public class MainActivity extends BaseActivity
                 startActivity(i);
             }
         });
-        edtxtPoints=findViewById(R.id.editTextForPoints);
+//        edtxtPoints=findViewById(R.id.editTextForPoints);
         //logoutBtn=findViewById(R.id.button2);
         name=findViewById(R.id.welcome_tv);
         gso=new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
@@ -115,11 +115,11 @@ public class MainActivity extends BaseActivity
 
 //        end working on sxc check here
 
-        btn_scan =findViewById(R.id.btn_scan);
-        btn_scan.setOnClickListener(v->
-        {
-            scanCode();
-        });
+//        btn_scan =findViewById(R.id.btn_scan);
+//        btn_scan.setOnClickListener(v->
+//        {
+//            scanCode();
+//        });
     }
 
 

@@ -14,7 +14,7 @@ import java.util.List;
 
 public class MyViewHolder extends RecyclerView.ViewHolder{
     TextView name, department, venue, faculty, date, time, points;
-    Button deleteBtn, editBtn;
+    Button btn_scan;
     View cl, cl2;
 
     ImageView arrow;
@@ -30,5 +30,7 @@ public class MyViewHolder extends RecyclerView.ViewHolder{
         date = itemView.findViewById(R.id.dateTV);
         time = itemView.findViewById(R.id.timeTV);
         points = itemView.findViewById(R.id.pointsTV);
+        btn_scan = itemView.findViewById(R.id.scanBtn);
+
     }
 }
