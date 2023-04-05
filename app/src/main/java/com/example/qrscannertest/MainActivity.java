@@ -35,7 +35,7 @@ import com.journeyapps.barcodescanner.ScanOptions;
 
 import java.util.HashMap;
 
-public class MainActivity extends AppCompatActivity
+public class MainActivity extends BaseActivity
 {
 
     TextView name;
@@ -143,16 +143,6 @@ public class MainActivity extends AppCompatActivity
         }
     }
     //menu end
-
-    private void logOut() {
-        gsc.signOut().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                finish();
-                startActivity(new Intent(getApplicationContext(),login.class));
-            }
-        });
-    }
 
 
     private void scanCode()
