@@ -114,120 +114,91 @@ public class MainActivity extends BaseActivity
 //        firebase assistant code for reading ends here
 
 //        end working on sxc check here
+    }
 
-//        btn_scan =findViewById(R.id.btn_scan);
-//        btn_scan.setOnClickListener(v->
+//    private void scanCode()
+//    {
+//        ScanOptions options = new ScanOptions();
+//        options.setPrompt("Volume up to flash on");
+//        options.setBeepEnabled(true);
+//        options.setOrientationLocked(true);
+//        options.setCaptureActivity(CaptureAct.class);
+//        barLaucher.launch(options);
+//    }
+//
+//    ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result->
+//    {
+//        if(result.getContents() !=null)
 //        {
-//            scanCode();
-//        });
-    }
-
-
-    //menu start
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.options_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle item selection
-        switch (item.getItemId()) {
-            case R.id.logout:
-                logOut();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
-    //menu end
-
-
-    private void scanCode()
-    {
-        ScanOptions options = new ScanOptions();
-        options.setPrompt("Volume up to flash on");
-        options.setBeepEnabled(true);
-        options.setOrientationLocked(true);
-        options.setCaptureActivity(CaptureAct.class);
-        barLaucher.launch(options);
-    }
-
-    ActivityResultLauncher<ScanOptions> barLaucher = registerForActivityResult(new ScanContract(), result->
-    {
-        if(result.getContents() !=null)
-        {
-            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-            builder.setTitle("Result");
-
-//            reading and converting the string
-            scannedData=result.getContents();
-
-//            counting the number of times # appears to make sure data is valid
-            ch = '#';
-            cnt = 0;
-            for ( int i = 0; i < scannedData.length(); i++) {
-                if (scannedData.charAt(i) == ch)
-                    cnt++;
-            }
-
-            String[] arrOfStr = scannedData.split("#", 0);
-            if(cnt==2) {
-//                for (String a : arrOfStr)    //debug
-//                    Log.d("data ", "data is: "+a);
-                scannedData = "Name: " + arrOfStr[0] + "\n" + "UID: " + arrOfStr[1] + "\n" + "Class: " + arrOfStr[2];
-            }else{
-                scannedData="This is not an official SXC ECC QRcode... Please try again or contact the admin";
-            }
-
-//            builder.setMessage(result.getContents());
-//            builder.setMessage("this is the msg");
-            builder.setMessage(scannedData);
-
-            builder.setNegativeButton("Cancel", (dialogInterface, i) -> dialogInterface.dismiss());
-
-
-            builder.setPositiveButton("Submit", new DialogInterface.OnClickListener()
-            {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i)
-                {
+//            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+//            builder.setTitle("Result");
+//
+////            reading and converting the string
+//            scannedData=result.getContents();
+//
+////            counting the number of times # appears to make sure data is valid
+//            ch = '#';
+//            cnt = 0;
+//            for ( int i = 0; i < scannedData.length(); i++) {
+//                if (scannedData.charAt(i) == ch)
+//                    cnt++;
+//            }
+//
+//            String[] arrOfStr = scannedData.split("#", 0);
+//            if(cnt==2) {
+////                for (String a : arrOfStr)    //debug
+////                    Log.d("data ", "data is: "+a);
+//                scannedData = "Name: " + arrOfStr[0] + "\n" + "UID: " + arrOfStr[1] + "\n" + "Class: " + arrOfStr[2];
+//            }else{
+//                scannedData="This is not an official SXC ECC QRcode... Please try again or contact the admin";
+//            }
+//
+////            builder.setMessage(result.getContents());
+////            builder.setMessage("this is the msg");
+//            builder.setMessage(scannedData);
+//
+//            builder.setNegativeButton("Cancel", (dialogInterface, i) -> dialogInterface.dismiss());
+//
+//
+//            builder.setPositiveButton("Submit", new DialogInterface.OnClickListener()
+//            {
+//                @Override
+//                public void onClick(DialogInterface dialogInterface, int i)
+//                {
+////                    dialogInterface.dismiss();
+//                    updateDB(arrOfStr[1], String.valueOf(edtxtPoints.getText()));
 //                    dialogInterface.dismiss();
-                    updateDB(arrOfStr[1], String.valueOf(edtxtPoints.getText()));
-                    dialogInterface.dismiss();
-
-                }
-            }).show();
-        }
-    });
-
-    private void updateDB(String uid, String points) {
-        // Read from the database
-
-
-        myRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (!task.isSuccessful()) {
-                    Log.e("firebase", "Error getting data", task.getException());
-                }
-                else {
-                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
-                    dataSet = (HashMap) task.getResult().getValue();
-                    Log.d("firebase", "onComplete: "+((HashMap)dataSet.get(uid)).get("score"));
-
-                    myRef.child(uid).child("score").setValue(Integer.parseInt(String.valueOf(((HashMap)dataSet.get(uid)).get("score")))+Integer.parseInt(points));
-                }
-            }
-        });
-
-        Log.d("firebase", "updateDB: "+dataSet);
-//        HashMap dataSet2= dataSet.get("205009");
-//        dataSet2.get("score");
-//        myRef.child(uid).child("score").setValue(dataSet2.get("score")+points);
-    }
+//
+//                }
+//            }).show();
+//        }
+//    });
+//
+//    private void updateDB(String uid, String points) {
+//        // Read from the database
+//
+//
+//        myRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+//            @Override
+//            public void onComplete(@NonNull Task<DataSnapshot> task) {
+//                if (!task.isSuccessful()) {
+//                    Log.e("firebase", "Error getting data", task.getException());
+//                }
+//                else {
+//                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
+//                    dataSet = (HashMap) task.getResult().getValue();
+//                    Log.d("firebase", "onComplete: "+((HashMap)dataSet.get(uid)).get("score"));
+//
+//                    myRef.child(uid).child("score").setValue(Integer.parseInt(String.valueOf(((HashMap)dataSet.get(uid)).get("score")))+Integer.parseInt(points));
+//                }
+//            }
+//        });
+//
+//        Log.d("firebase", "updateDB: "+dataSet);
+////        HashMap dataSet2= dataSet.get("205009");
+////        dataSet2.get("score");
+////        myRef.child(uid).child("score").setValue(dataSet2.get("score")+points);
+//    }
 
 
 

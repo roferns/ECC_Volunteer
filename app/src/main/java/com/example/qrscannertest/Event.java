@@ -1,4 +1,8 @@
 package com.example.qrscannertest;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Event {
     String id;
     String eventName;
@@ -8,6 +12,8 @@ public class Event {
     String points;
     String date;
     String time;
+
+    List<String> eventsAttended;
 
     public Event() {
 

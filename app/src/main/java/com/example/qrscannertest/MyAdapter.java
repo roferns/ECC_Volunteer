@@ -29,21 +29,13 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
+
 public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
 
     Context context;
     List<Event> events;
     DatabaseReference myRef;
     FirebaseDatabase database;
-
-    HashMap dataSet;
-
-    int points;
-    EditText edtxtPoints;
-    char ch;
-    int cnt;
-    String scannedData;
-
 
     public MyAdapter(Context context, List<Event> events) {
         this.context = context;
@@ -70,10 +62,21 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
         holder.venue.setText((events.get(position).getVenue()));
         holder.faculty.setText((events.get(position).getFaculty()));
         holder.points.setText((events.get(position).getPoints()));
+
         holder.btn_scan.setOnClickListener(view ->{
-            //scanCode();
+            database = FirebaseDatabase.getInstance("https://eccloginmoduletest-default-rtdb.asia-southeast1.firebasedatabase.app/");
+            myRef = database.getReference("events");
+            myRef.child(events.get(position).getId());
+            Intent i = new Intent(context, ScanActivity.class);
+            i.putExtra("points", events.get(position).getPoints());
+            i.putExtra("events", events.get(position).getId());
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i);
         });
     }
+
+
+
 
 
     @Override

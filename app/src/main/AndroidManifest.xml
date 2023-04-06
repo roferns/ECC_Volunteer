@@ -12,9 +12,13 @@
         android:roundIcon="@mipmap/logo_round"
         android:supportsRtl="true">
         <activity
-            android:name=".ViewEvents"
+            android:name=".ScanActivity"
             android:exported="false"
             android:theme="@style/Theme.VolunteerApp"/>
+        <activity
+            android:name=".ViewEvents"
+            android:exported="false"
+            android:theme="@style/Theme.VolunteerApp" />
         <activity
             android:name=".login"
             android:exported="true"
@@ -28,7 +32,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.VolunteerApp"/>
+            android:theme="@style/Theme.VolunteerApp" />
         <activity
             android:name=".CaptureAct"
             android:screenOrientation="portrait"
