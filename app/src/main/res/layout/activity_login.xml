@@ -4,26 +4,54 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg"
     android:theme="@style/login"
-    android:background="@color/blue_500"
-    tools:context=".login">
+    tools:context=".login"
+    >
 
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/login_btn"
+        style="@style/login.btn"
         android:layout_width="254dp"
         android:layout_height="87dp"
         android:drawableEnd="@drawable/google"
+        android:elevation="60dp"
         android:text="@string/login_btn"
         android:textAlignment="viewStart"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:elevation="60dp"
-        app:iconPadding="4dp"
-        style="@style/login.btn"
+        app:cornerRadius="10dp"
         app:elevation="4dp"
-        app:cornerRadius="10dp"/>
+        app:iconPadding="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textView"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.333" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="284dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="12dp"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/inter"
+        android:text="Use valid Email ID provided by college to login"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_btn" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:textSize="32sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:background="#00FFFFFF"
+        android:fontFamily="@font/inter_black"
+        android:text="ECC Volunteer"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/login_btn"
+        app:layout_constraintStart_toStartOf="@+id/login_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

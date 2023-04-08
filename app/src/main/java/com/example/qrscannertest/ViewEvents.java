@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -40,6 +41,7 @@ public class ViewEvents extends BaseActivity implements AdapterView.OnItemSelect
     List<Event> events = new ArrayList<Event>();
     RecyclerView recyclerView;
     MyAdapter adapterForUpdate;
+    Button btn_scan;
 
     SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
     SimpleDateFormat todayFormatter = new SimpleDateFormat("yyyy-MM-dd");
@@ -115,6 +117,7 @@ public class ViewEvents extends BaseActivity implements AdapterView.OnItemSelect
                             if(dateComparisonFlag > 0)
                             {
                                 if (spinnerValue==102){
+
                                     events.add(new Event(i + "",
                                             ((HashMap) value.get(i)).get("name") + "",
                                             ((HashMap) value.get(i)).get("department") + "",

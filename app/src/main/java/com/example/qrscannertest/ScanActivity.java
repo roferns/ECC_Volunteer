@@ -20,29 +20,33 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class ScanActivity extends AppCompatActivity {
     DatabaseReference myRef;
     FirebaseDatabase database;
     HashMap dataSet;
+
+    List<String> attended = new ArrayList<>();
     String points;
     char ch;
     int cnt;
     String scannedData;
 
-    String uid="";
+    String key="";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_scan);
         scanCode();
 
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             points = (String) bundle.get("points");
+            key = (String) bundle.get("key");
         }
 
         database = FirebaseDatabase.getInstance("https://eccloginmoduletest-default-rtdb.asia-southeast1.firebasedatabase.app/");
@@ -100,31 +104,57 @@ public class ScanActivity extends AppCompatActivity {
                 public void onClick(DialogInterface dialogInterface, int i)
                 {
                     Log.e("params", "uid: " + arrOfStr[1] + " points: " + points);
-//                    dialogInterface.dismiss();
-                    updateDB(arrOfStr[1], String.valueOf(points));
+                    updateDB(arrOfStr[1], String.valueOf(points), String.valueOf(key));
                     dialogInterface.dismiss();
 //                    Intent k =  new Intent(ScanActivity.this, ViewEvents.class);
 //                    startActivity(k);
                     scanCode();
-
                 }
             }).show();
         }
     });
 
-    private void updateDB(String uid, String points) {
+
+    private void updateDB(String uid, String points, String key) {
         // Read from the database
 
         myRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
+                String a = String.valueOf(task.getResult().getValue());
+
                 if (!task.isSuccessful()) {
                     Log.e("firebase", "Error getting data", task.getException());
                 }
                 else {
                     dataSet = (HashMap) task.getResult().getValue();
+                    Log.d("firebase", String.valueOf(task.getResult().getValue()));
 
-                    myRef.child(uid).child("score").setValue(Integer.parseInt(String.valueOf(((HashMap) dataSet.get(uid)).get("score"))) + Integer.parseInt(points));
+                    myRef.child(uid).child("eventsAttended").get().addOnCompleteListener(task1 -> {
+                        attended= (List<String>) task1.getResult().getValue();
+//                        Log.e("1610", "attended: " +attended );
+                        if(attended != null) {
+                            if(!attended.contains(key)) {
+                                while (attended.remove(null)) {
+                                }
+                                attended.add(key);
+                                myRef.child(uid).child("eventsAttended").setValue(attended);
+                                myRef.child(uid).child("score").setValue(Integer.parseInt(String.valueOf(((HashMap) dataSet.get(uid)).get("score"))) + Integer.parseInt(points));
+                            }
+                            else{
+                                Toast.makeText(ScanActivity.this, "Event already attended by student", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                        else {
+                            List<String> attended = new ArrayList<>();
+                            attended.add(key);
+                            myRef.child(uid).child("eventsAttended").setValue(attended);
+                            myRef.child(uid).child("score").setValue(Integer.parseInt(String.valueOf(((HashMap) dataSet.get(uid)).get("score"))) + Integer.parseInt(points));
+                        }
+
+                        Log.d("lol", "array data "+attended);
+                    });
                 }
             }
         });

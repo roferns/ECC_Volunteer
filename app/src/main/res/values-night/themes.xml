@@ -23,7 +23,6 @@
         <item name="colorSecondary">@color/blue_200</item>
         <item name="colorSecondaryVariant">@color/blue_500</item>
         <item name="colorOnSecondary">@color/black</item>
-        <item name="fontFamily">@font/inter_bold</item>
     </style>
 
     <style name="login.btn" parent="Theme.Material3.Dark">
@@ -59,14 +58,10 @@
         <item name="cornerRadius">10dp</item>
     </style>
 
-    <style name="drawable">
-        <item name="drawableTint">?attr/colorOnSurface</item>
+    <style name="button.scan">
+        <item name="android:backgroundTint">?attr/colorPrimary</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
     </style>
-
-    <style name="drawable.dropdwon">
-        <item name="android:drawableEnd">@drawable/drop_down_arrow</item>
-    </style>
-
 
 
 </resources>

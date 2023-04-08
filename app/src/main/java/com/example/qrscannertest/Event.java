@@ -12,8 +12,7 @@ public class Event {
     String points;
     String date;
     String time;
-
-    List<String> eventsAttended;
+    boolean expanded;
 
     public Event() {
 

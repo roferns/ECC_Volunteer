@@ -25,7 +25,12 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.journeyapps.barcodescanner.ScanContract;
 import com.journeyapps.barcodescanner.ScanOptions;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -36,6 +41,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
     List<Event> events;
     DatabaseReference myRef;
     FirebaseDatabase database;
+    String key, date;
+    int flag = 0;
+
 
     public MyAdapter(Context context, List<Event> events) {
         this.context = context;
@@ -63,21 +71,47 @@ public class MyAdapter extends RecyclerView.Adapter<MyViewHolder>{
         holder.faculty.setText((events.get(position).getFaculty()));
         holder.points.setText((events.get(position).getPoints()));
 
-        holder.btn_scan.setOnClickListener(view ->{
-            database = FirebaseDatabase.getInstance("https://eccloginmoduletest-default-rtdb.asia-southeast1.firebasedatabase.app/");
-            myRef = database.getReference("events");
-            myRef.child(events.get(position).getId());
-            Intent i = new Intent(context, ScanActivity.class);
-            i.putExtra("points", events.get(position).getPoints());
-            i.putExtra("events", events.get(position).getId());
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            context.startActivity(i);
+        database = FirebaseDatabase.getInstance("https://eccloginmoduletest-default-rtdb.asia-southeast1.firebasedatabase.app/");
+        myRef = database.getReference("events");
+        key = events.get(position).getId();
+        myRef.child(key).child("date").get().addOnCompleteListener(task -> {
+            Log.d("1610", "Date: " + task.getResult().getValue());
+            date = (String) task.getResult().getValue();
+
+            flag = date.compareTo(getTodaysDate());
+            if(flag == 0){
+                holder.btn_scan.setVisibility(View.VISIBLE);
+                holder.btn_scan.setOnClickListener(view ->{
+                    database = FirebaseDatabase.getInstance("https://eccloginmoduletest-default-rtdb.asia-southeast1.firebasedatabase.app/");
+                    myRef = database.getReference("events");
+                    myRef.child(events.get(position).getId());
+                    Intent i = new Intent(context, ScanActivity.class);
+                    i.putExtra("points", events.get(position).getPoints());
+                    i.putExtra("key", events.get(position).getId());
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+                });
+            }
+            else {
+                holder.btn_scan.setVisibility(View.GONE);
+            }
         });
     }
 
+    private String getTodaysDate()
+    {
+        Calendar cal = Calendar.getInstance();
+        int year = cal.get(Calendar.YEAR);
+        int month = cal.get(Calendar.MONTH);
+        month = month + 1;
+        int day = cal.get(Calendar.DAY_OF_MONTH);
+        return makeDateString(day, month, year);
+    }
 
-
-
+    private String makeDateString(int day, int month, int year)
+    {
+        return day + "-" + month + "-" + year;
+    }
 
     @Override
     public int getItemCount() {
